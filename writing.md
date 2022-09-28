@@ -514,6 +514,161 @@ Variabel merupakan tempat untuk menyimpan sebuah nilai pada bahasa pemrograman
 >3. gunakan camelCase untuk penamaan yang lebih dari satu kata. contoh : angkaGanjil, namaDepan
 
 ### Operator
+- Assignment operator
 
+  digunakan untuk **menyimpan** sebuah nilai pada variabel.
 
+- Mahematical Assignment operator
 
+  digunakan untuk **operasi matematika** dengan tipe data number.
+
+- Increment dan Decrement
+
+  digunakan untuk **menambah** atau **mengurangi** sebesar 1 nilai.
+
+- Arithmetic operator
+
+  digunakan untuk melakukan operasi matematika.
+  - penjumlahan (+)
+  - pengurangan (-)
+  - pembagian (/)
+  - perkalian (*)
+  - modulus (%)
+
+- Comparison operator
+
+  digunakan untuk **membandingkan** satu nilai dengan nilai lainnya. Hasil comparison akan berupa **true** atau **false**.
+  - simbol comparison operator `(<, >, <=, >=, ==, !==)`
+
+- Logical operator
+
+  digunakan untuk sebuah conditional pada pemrograman yang **menghasilkan nilai boolean** yaitu true atau false.
+
+  Terdapat beberapa symbol dari logical operator
+  - AND( && ) : menghasilkan nilai true jika kedua nilai atau semua premis bernilai TRUE.
+  - OR ( | | ) : menghasilkan nilai true jika salah satu premis mengandung nilai TRUE.
+  - NOT( ! ) : mengembalikan sebulah nilai boolean dari TRUE menjadi FALSE atau sebaliknya.
+
+## Conditional
+- Conditional merupakan statement percabangan yang menggambarkan suatu kondisi, statement akan memeriksa kondisi dan menjalankan perintah berdasarkan kondisi yang telah diberikan.
+
+ada beberapa conditional:
+1. IF Statement
+    ```JS
+    let makan = "kenyang"
+    if (makan == "kenyang"){
+      console.log("Saya sudah makan")
+    }
+    //OUTPUT
+    "Saya sudah makan"
+    ```
+2. IF... ELSE Statement
+  - else akan mengeksekusi ketika statement pada suatu kondisi bernilai FALSE.
+    ```JS
+    let makan = false
+    if (makan){
+      console.log("aku kenyang")
+    } else {
+      console.log("belum makan")
+    }
+    //OUTPUT
+    "belum makan"
+    ```
+3. IF... ELSE IF... Statement
+  - else... if digunakan jika mempunyai berbagai kondisi. contoh:
+    ```JS
+    let lampu = "kuning";
+      if (lampu === "merah") {
+        console.log("Berhenti!");
+      } else if (lampu === "kuning") {
+        console.log("Pelan-pelan");
+      } else if (lampu === "hijau") {
+        console.log("Jalan!");
+      } else {
+        console.log("Hati-hati, tidak dikenal");
+      }
+      //OUTPUT
+      "Pelan-pelan"
+    ```
+
+4. Switch Case Conditional
+- Switch Case digunakan jika kondisi dan percabangan terlalu banyak
+```JS
+let tekanTombol = 1;
+  switch(tekanTombol) {
+    case 1:
+      console.log("Matikan TV"); 
+      break;
+    case 2:
+      console.log("Tingkatkan volume TV"); 
+      break;
+    case 3:
+      console.log("Turunkan volume TV"); 
+      break;
+    case 4:
+      console.log("Matikan suara TV"); 
+      break;
+    default:
+      console.log("Tidak terjadi apa-apa"); 
+      break;
+  }
+  //OUTPUT
+  "Matikan TV"
+```
+ 
+ ## Looping
+- Looping merupakan statement yang melakukan perulangan hingga suatu kondisi terpenuhi atau jika batas tercapai.
+
+ada beberapa looping:
+1. Manual looping
+    ```js
+    console.log(1);
+    console.log(2);
+    console.log(3);
+    console.log(4);
+    console.log(5);
+    // akan menampilkan nilai 1-5
+    ```
+2. For loop
+- for loop digunakan ketika kita **tahu** seberapa banyak nilai **pasti** untuk perulangannya
+    ```js
+    let angka = 1;
+  for (angka; angka <= 10; angka++) {
+    console.log(angka);
+  }
+  // akan menampilkan angka 1-10
+  ```
+3. While loop
+- while loop akan menjalankan instruksi jika perulangan **kondisi bernilai true**
+    ```js
+    let angka = 1;
+  while (angka <= 10) {
+    console.log(angka);
+    angka++;
+  }
+  // akan menampilkan angka 1-10
+  ```
+4. Do while loop
+- do while loop digunakan ketika ingin menjalankan perulangan 1 kali sebelum dilakukan pengecekan kondisi.
+    ```js
+      let angka = 10
+  do{
+    console.log(angka);
+    angka--;
+  } while (angka > 0)
+  // akan menampilkan angka 10-1
+  ```
+5. Nested loop
+- bersarang / melakukan looping di dalam looping
+    ```js
+    for (let i = 0; i <= 2; i++) {
+      console.log("Loop awal");
+      for (let j = 0; j <= 3; j++) {
+        console.log("Loop kedua");
+      }
+    }
+    // akan menampilkan 
+    // loop awal 1x
+    // loop kedua 4x
+    // dan berulang hingga 3x
+    ```
