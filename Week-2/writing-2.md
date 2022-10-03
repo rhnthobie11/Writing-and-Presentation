@@ -167,6 +167,95 @@ Short Syntax Function
 
 - Bug adalah kesalahan pada aplikasi yang menghasilkan hasil yang tidak diinginkan sehingga aplikasi tidak berfungsi sebagaimana mestinya atau crash.
 
+- Error object dikeluarkan ketika kesalahan runtime terjadi. Error object juga dapat digunakan sebagai objek dasar untuk pengecualian yang ditentukan oleh pengguna.
+- Error merupakan objek serializable, sehingga dapat dikloning dengan StructureClone() atau disalin antara 'pengembang' menggunakan postMessage().
+
+**ERROR TYPES :**
+
+- EvalError
+
+    Membuat instance yang mewakili kesalahan yang terjadi terkait fungsi global eval().
+
+- RangeError
+
+    Membuat instance yang mewakili kesalahan yang terjadi saat variabel numerik atau parameter berada di luar rentang validnya.
+
+- ReferenceError
+
+    Membuat instance yang mewakili kesalahan yang terjadi saat mereferensikan referensi yang tidak valid.
+
+- SyntaxError
+
+    Membuat instance yang mewakili kesalahan sintaks.
+
+- TypeError
+
+    Membuat instance yang mewakili kesalahan yang terjadi saat variabel atau parameter bukan tipe yang valid.
+
+- URIError
+
+    Membuat instance yang mewakili kesalahan yang terjadi saat encodeURI() atau decodeURI() melewati parameter yang tidak valid.
+
+- AggregateError
+
+    Membuat instance yang mewakili beberapa kesalahan yang dibungkus dalam satu kesalahan ketika beberapa kesalahan perlu dilaporkan oleh suatu operasi, misalnya oleh Promise.any().
+
+- InternalError Non-standard
+
+    Membuat instance yang mewakili kesalahan yang terjadi saat kesalahan internal di mesin JavaScript dilemparkan. Misalnya. "terlalu banyak rekursi"
+
+**CONSTRUCTOR Error()** : Membuat objek Kesalahan baru.
+
+**Static Methods** :
+
+- Error.captureStackTrace() (Tidak standar)
+
+    Fungsi V8 non-standar yang membuat properti stack pada instance Error.
+
+- Error.stackTraceLimit (Non-standar)
+
+    Properti numerik V8 non-standar yang membatasi jumlah bingkai tumpukan untuk disertakan dalam pelacakan tumpukan kesalahan.
+
+- Error.prepareStackTrace() (Non-standar dan Opsional)
+
+    Fungsi V8 non-standar yang, jika disediakan oleh kode pengguna, dipanggil oleh mesin JavaScript V8 untuk pengecualian yang dilontarkan, memungkinkan pengguna menyediakan pemformatan khusus untuk pelacakan tumpukan.
+
+**Instance Properties** :
+
+- Error.prototype.message
+
+    Pesan eror. Untuk objek Error yang dibuat pengguna, ini adalah string yang disediakan sebagai argumen pertama konstruktor.
+
+- Error.prototype.name
+
+    Nama kesalahan. Ini ditentukan oleh fungsi konstruktor.
+
+- Error.prototype.cause
+
+    Penyebab kesalahan yang menunjukkan alasan mengapa kesalahan saat ini terjadi — biasanya kesalahan lain yang tertangkap. Untuk objek Error yang dibuat pengguna, ini adalah nilai yang diberikan sebagai properti penyebab argumen kedua konstruktor.
+
+- Error.prototype.fileName (Non-standar)
+
+    Properti Mozilla non-standar untuk jalur ke file yang memunculkan kesalahan ini.
+
+- Error.prototype.lineNumber (Non-standar)
+
+    Properti Mozilla non-standar untuk nomor baris dalam file yang memunculkan kesalahan ini.
+
+- Error.prototype.columnNumber (Non-standar)
+
+    Properti Mozilla non-standar untuk nomor kolom di baris yang memunculkan kesalahan ini.
+
+- Error.prototype.stack (Non-standar)
+
+    Properti non-standar untuk pelacakan tumpukan.
+
+**Instance Methods** :
+
+- Error.prototype.toString()
+
+    Mengembalikan string yang mewakili objek yang ditentukan. Mengganti metode Object.prototype.toString().
+
 
 
 
@@ -273,37 +362,41 @@ contoh tipe data primitif & Non-primitif
 <hr>
 
 ## DOM HTML
-- DOM merupakan cara memanipulasi html agar website lebih dinamis dan interaktif
-- Cara memanggil DOM Value yaitu :
-  - Memanggil tag HTML berdasarkan ID
-    >`console.log(document.getElementByID("header))`
-  - Memanggil tag HTML berdasarkan Class Name 
-    >`console.log(document.getElementByClassName("text-color-blue"))`
-  - Memanggil tag html berdasarkan query selector
-    >`console.log(document.querySelector("#header "))`
-    >`console.log(document.querySelector(".text-color-blue"))`
+- DOM adalah singkatan dari (Document Object Model). Ini dalah sebuah interface yang memungkinkan developer untuk memanipulasi style, serta konten pada sebuah halamn website.
+- DOM merupakan cara memanipulasi HTML agar website lebih dinamis dan interaktif.
 
-- Memanipulasi content
+**Cara memanggil DOM Value yaitu :**
+  - Memanggil tag HTML berdasarkan ID
+    >console.log(document.getElementByID("header))
+  - Memanggil tag HTML berdasarkan Class Name 
+    >console.log(document.getElementByClassName("text-color-blue"))
+  - Memanggil tag html berdasarkan query selector
+    >console.log(document.querySelector("#header "))
+    >console.log(document.querySelector(".text-color-blue"))
+
+**Memanipulasi content**
 
   Cara memanipulasi content :
   - Deklarasi varible header sebagai wadah untuk menyimpan tag HTML
-        >`let header = document.getElementById("header"); `
+        >let header = document.getElementById("header");
   - Memanipulasi Content pada Header Content dari pemilik element dengan ID Header dengan text.Content
-        >`document.getElementById("header").textContent = "Teks Heading" `
+        >document.getElementById("header").textContent = "Teks Heading" 
 
-Memanipulasi Content didalam sebuah element dengan .innerHTML
+Memanipulasi Content didalam sebuah element dengan **.innerHTML**
   ```js
   <ul id= "list"></ul>
 
   document.getElementById("list").innerHTML = "<li> item1 </li> <li> item2 </li>"
   ```
-- Membuat Element HTML
+
+Membuat Element HTML
 - Contoh :
+
   ```js
   <div id ="header"></div>
 
-  //untuk membuat sebuah elemnt heading
-  const heading = dosument.createElement("h1)
+  // membuat sebuah element heading
+  const heading = document.createElement(""h1")
   heading.textContent = "Ini Heading"
 
   document.getElemntByID("header").appendChild(heading)
@@ -332,13 +425,18 @@ Memanipulasi Content didalam sebuah element dengan .innerHTML
   - Memiliki argument tambahan {options}
 
 - Contoh EventListener :
-  - EventListener - Click 
-    `` <input id="user-input"/> ``
-    `` <button id="alert-button">show</button> ``
+  - EventListener - Click
+    ```js
+    <input id="user-input"/>
+    <button id="alert-button">show</button>
+    ```
     Memanggil element berdasarkan id
-    `` const input = document.getElementById("user-input") ``
-    `` const button = dosument.getElementById("alert-button") ``
-
+    ```js 
+    const input = document.getElementById("user-input") 
+    const button = dosument.getElementById("alert-button")
+    ```
+    
+    Menambahkan EventListener pada button
     ```js
      button.addEventListener("click", function()) {
       alert(input.value)
@@ -346,11 +444,11 @@ Memanipulasi Content didalam sebuah element dengan .innerHTML
     ```
 - EventListener - Blur : event dimana sebuah element kehilangan fokus dari user 
 - Contoh EventListener - Blur <br />
-  Misalkan saat ingin memvalidasi isi dari ``<input id = "username" />`` agar panjangnya minimal 6 karakter
-
-  `` const input = document.getElementById("username") ``
+  Misalkan saat ingin memvalidasi isi dari `<input id = "username" />` agar panjangnya minimal 6 karakter
 
   ```js
+  const input = document.getElementById("username")
+
   input.addEventListener("blur", () => {
     if(input.value.length < 6) alert("Panjang username minimal 6")
   })
@@ -374,5 +472,4 @@ Memanipulasi Content didalam sebuah element dengan .innerHTML
     }
   })
   ```
-
-<hr>
+  
